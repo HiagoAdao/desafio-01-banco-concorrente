@@ -1,0 +1,23 @@
+name: Testes Unitários
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  test:
+    name: Rodar testes unitários
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Rodar testes
+        run: python -m unittest test_sistema_bancario.py -v
